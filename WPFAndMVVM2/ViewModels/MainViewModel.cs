@@ -55,14 +55,9 @@ namespace WPFAndMVVM2.ViewModels
             string lName = "Specify LastName";
             int age = 0;
             string phone = "Specify Phone";
-            Person person = new Person()
-                {
-                    FirstName = fName,
-                    LastName = lName,
-                    Age = age,
-                    Phone = phone
-                };
-            personRepo.Add(fName, lName, age, phone);
+            
+            Person person = personRepo.Add(fName, lName, age, phone);
+            
             PersonViewModel viewModel = new PersonViewModel(person);
             PersonsVM.Add(viewModel);
             SelectedPerson = viewModel;
@@ -71,8 +66,7 @@ namespace WPFAndMVVM2.ViewModels
         public void DeleteSelectedPerson() 
         {
             personRepo.Remove(SelectedPerson.ID);
-            PersonsVM?.Remove(SelectedPerson);
-            
+            PersonsVM.Remove(SelectedPerson);  
         }
     }
 }
