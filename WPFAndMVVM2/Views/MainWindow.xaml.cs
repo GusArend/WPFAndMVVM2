@@ -13,5 +13,15 @@ namespace WPFAndMVVM2
             viewModel = new MainViewModel();
             DataContext = viewModel;
         }
+
+        private void btnNewPerson_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.AddDefaultPerson();
+        }
+
+        private void btnDeletePerson_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.DeleteSelectedPerson();
+        }
     }
 }

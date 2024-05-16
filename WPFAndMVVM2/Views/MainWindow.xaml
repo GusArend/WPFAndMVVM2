@@ -30,13 +30,15 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Button Name="btnNewPerson" Margin="0,0,125,0" Grid.Row="1" Click="btnNewPerson_Click">New</Button>
+            <Button Name="btnDeletePerson" Margin="125,0,0,0" Grid.Row="1" Click="btnDeletePerson_Click">Delete</Button>
             <StackPanel Orientation="Horizontal" Grid.Row="1"/>
         </Grid>
 
         <GridSplitter Width="5" Grid.Column="1" HorizontalAlignment="Stretch"/>
         <Grid Grid.Column="2">
-            <TextBox Text="{Binding SelectedPerson.FirstName, Mode=TwoWay}" Height="20" VerticalAlignment="Top" Margin="170,62,171,0"/>
-            <TextBox Text="{Binding SelectedPerson.LastName, Mode=TwoWay}" Height="20" Margin="170,109,171,0" VerticalAlignment="Top" />
+            <TextBox Text="{Binding SelectedPerson.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" VerticalAlignment="Top" Margin="170,62,171,0"/>
+            <TextBox Text="{Binding SelectedPerson.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="170,109,171,0" VerticalAlignment="Top" />
             <TextBox Text="{Binding SelectedPerson.Age, Mode=TwoWay}" Height="20" Margin="170,158,171,0" VerticalAlignment="Top"/>
             <TextBox Text="{Binding SelectedPerson.Phone, Mode=TwoWay}" Height="20" Margin="170,204,171,0" VerticalAlignment="Top"/>
             <Label Content="FirstName:" HorizontalAlignment="Left" Margin="67,59,0,0" VerticalAlignment="Top"/>

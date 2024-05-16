@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Controls;
 using WPFAndMVVM2.Models;
 
 namespace WPFAndMVVM2.ViewModels
@@ -46,6 +47,32 @@ namespace WPFAndMVVM2.ViewModels
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void AddDefaultPerson() 
+        {
+            string fName = "Specify FirstName";
+            string lName = "Specify LastName";
+            int age = 0;
+            string phone = "Specify Phone";
+            Person person = new Person()
+                {
+                    FirstName = fName,
+                    LastName = lName,
+                    Age = age,
+                    Phone = phone
+                };
+            personRepo.Add(fName, lName, age, phone);
+            PersonViewModel viewModel = new PersonViewModel(person);
+            PersonsVM.Add(viewModel);
+            SelectedPerson = viewModel;
+        }
+
+        public void DeleteSelectedPerson() 
+        {
+            personRepo.Remove(SelectedPerson.ID);
+            PersonsVM?.Remove(SelectedPerson);
+            
         }
     }
 }
